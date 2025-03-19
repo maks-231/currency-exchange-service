@@ -1,19 +1,28 @@
 package com.in28.microservices.currency_exchange_service.configuration;
 
-import org.apache.catalina.filters.HttpHeaderSecurityFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
+import org.springframework.http.HttpMethod;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration
 public class SpringSecurityConfiguration {
   @Bean
   public SecurityFilterChain filterChaim(HttpSecurity http) {
     try {
-//      http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
-//      http.httpBasic(Customizer.withDefaults());
+      http
+          .authorizeHttpRequests(authorize -> {
+            authorize.requestMatchers(antMatcher("/h2-console/**")).permitAll()
+                .requestMatchers(antMatcher(HttpMethod.GET, "/currency-exchange/**")).permitAll()
+                .anyRequest().permitAll();
+          });
+
+      http.csrf().disable();
+      http.headers().frameOptions().disable();
       return http.build();
     } catch (Exception e) {
       throw new RuntimeException("Cannot create a security chain");

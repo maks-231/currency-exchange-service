@@ -1,24 +1,38 @@
-package com.in28.microservices.currency_exchange_service.model;
+package com.in28.microservices.currency_exchange_service.dto;
 
 import java.math.BigDecimal;
 
-public class CurrencyExchange {
+public class CurrencyConversionDto {
   private Long id;
+
+  public BigDecimal getQuantity() {
+    return quantity;
+  }
+
+  public BigDecimal getTotalCalculateAmount() {
+    return totalCalculateAmount;
+  }
+
   private String from;
   private String to;
   private BigDecimal conversionMultiple;
-
+  private BigDecimal quantity;
+  private BigDecimal totalCalculateAmount;
   private String environment;
 
-  public CurrencyExchange() {
-  }
-
-  public CurrencyExchange(Long id, String from, String to, BigDecimal conversionMultiple) {
+  public CurrencyConversionDto(Long id, String from, String to, BigDecimal conversionMultiple, BigDecimal quantity, BigDecimal totalCalculateAmount, String environment) {
     this.id = id;
     this.from = from;
     this.to = to;
     this.conversionMultiple = conversionMultiple;
+    this.quantity = quantity;
+    this.totalCalculateAmount = totalCalculateAmount;
+    this.environment = environment;
   }
+
+  public CurrencyConversionDto() {
+  }
+
 
   public Long getId() {
     return id;
@@ -58,5 +72,13 @@ public class CurrencyExchange {
 
   public void setConversionMultiple(BigDecimal conversionMultiple) {
     this.conversionMultiple = conversionMultiple;
+  }
+
+  public void setQuantity(BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+  public void setTotalCalculateAmount(BigDecimal totalCalculateAmount) {
+    this.totalCalculateAmount = totalCalculateAmount;
   }
 }

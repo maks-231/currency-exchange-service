@@ -1,8 +1,3 @@
-
-insert into exchange_value(currency_from, currency_to, conversion_multiple, port) values('USD', 'INR', 65, 0);
-insert into exchange_value(currency_from, currency_to, conversion_multiple, port) values('EUR', 'INR', 75, 0);
-insert into exchange_value(currency_from, currency_to, conversion_multiple, port) values('AUD', 'INR', 55, 0);
-
-insert into user_details(first_name, last_name, birth_date) values('Petru', 'ZZZ', now());
-insert into user_details(first_name, last_name, birth_date) values('Vadim', 'TTT', now());
-insert into user_details(first_name, last_name, birth_date) values('German', 'RRR', now());
+insert into exchange_value(currency_from, currency_to, customer_id, traded, gained, trade_date) values('USD', 'MDL', 1, 60000, 3391.31, '2024-01-10');
+insert into exchange_value(currency_from, currency_to, customer_id, traded, gained, trade_date) values('EUR', 'USD', 2, 1500, 1637.7, '2024-01-10');
+insert into exchange_value(currency_from, currency_to, customer_id, traded, gained, trade_date) values('MDL', 'EUR', 3, 10000, 193164.00, '2024-01-10');

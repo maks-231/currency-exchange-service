@@ -16,9 +16,6 @@ import io.github.resilience4j.retry.annotation.Retry;
 public class CircuitBreakerController {
   private Logger log = LoggerFactory.getLogger(CircuitBreakerController.class);
   @GetMapping("/sample-api")
-//  @Retry(name = "sample-api", fallbackMethod = "hardcodedResponse")
-//  @CircuitBreaker(name = "sample-api", fallbackMethod = "hardcodedResponse")
-//  @RateLimiter(name = "sample-api", fallbackMethod = "hardcodedResponse")
   @Bulkhead(name = "sample-api", fallbackMethod = "hardcodedResponse")
   public String sampleApi() {
     log.info("Sample Api call received!");
